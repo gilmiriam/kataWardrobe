@@ -8,13 +8,16 @@ import (
 func TestWardrobeCombinator(t *testing.T) {
 	tests := []struct {
 		name string
-		want combinator
+		want [][]int
 	}{
 		{
 			name: "A Combination using only the smallest element",
-			want: combinator{
-				[]int{50, 50, 50, 50, 50},
-			},
+			want: [][]int{{50, 50, 50, 50, 50}},
+		},
+
+		{
+			name: "A Combination using the two smallest elements",
+			want: [][]int{{100, 100, 50}},
 		},
 	}
 

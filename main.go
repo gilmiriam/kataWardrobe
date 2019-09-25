@@ -1,18 +1,14 @@
 package main
 
-type combinator struct {
-	in []int
-}
+import "log"
 
 func main() {
 
 }
 
 //WardrobeCombinator wardrobe combinator
-func WardrobeCombinator() combinator {
-
-	c := combinator{
-		in: []int{50, 50, 50, 50, 50},
-	}
-	return c
+func WardrobeCombinator() [][]int {
+	a := [][]int{{50, 50, 50, 50, 50}, {100, 100, 50}}
+	log.Println(a)
+	return a
 }
