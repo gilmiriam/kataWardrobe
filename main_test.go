@@ -1,9 +1,9 @@
 package main
 
 import (
-	"fmt"
-	"reflect"
 	"testing"
+
+	"github.com/stretchr/testify/assert"
 )
 
 func TestWardrobeCombinator(t *testing.T) {
@@ -25,16 +25,7 @@ func TestWardrobeCombinator(t *testing.T) {
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			got := WardrobeCombinator()
-			includes := 0
-			for _, comb := range got {
-				fmt.Println(comb, " => ", tt.want[0])
-				if reflect.DeepEqual(comb, tt.want[0]) {
-					includes = 1
-					fmt.Println(includes)
-				}
-			}
-
-			if includes == 0 {
+			if !assert.Contains(t, got, tt.want[0]) {
 				t.Errorf("WardrobeCombinator() = %v, want %v", got, tt.want)
 			}
 		})
