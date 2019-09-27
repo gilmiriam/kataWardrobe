@@ -4,9 +4,11 @@ jobs:
 
   build:
     name: Build
-    runs-on: ubuntu-latest
+    runs:
+      using: docker
+      image: Dockerfile
     steps:
-
+      
     - name: Set up Go 1.12
       uses: actions/setup-go@v1
       with:
@@ -26,3 +28,6 @@ jobs:
 
     - name: Build
       run: go build -v .
+
+    - name: Test
+      run: go test 
