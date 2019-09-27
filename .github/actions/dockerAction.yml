@@ -1,0 +1,6 @@
+name: 'Dockerfile action'
+description: 'Workflow from docker image'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
