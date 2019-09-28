@@ -7,9 +7,8 @@ jobs:
         platform: [ubuntu-latest, macos-latest, windows-latest]
     runs-on: ${{ matrix.platform }}
     steps:
+    -uses: ./
     - name: Install Go
       uses: actions/dockerAction@v1
-    - name: Checkout code
-      uses: actions/checkout@v1
     - name: Test
       run: go test ./...
