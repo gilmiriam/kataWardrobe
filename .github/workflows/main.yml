@@ -9,6 +9,6 @@ jobs:
     steps:
     - uses: ./
     - name: Install Go
-      uses: actions/dockerAction@v1
+      uses: actions/dockerAction
     - name: Test
       run: go test ./...
