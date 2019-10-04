@@ -1,14 +1,12 @@
 package main
 
-import "fmt"
-
 func main() {
 
 }
 
 //WardrobeCombinator wardrobe combinator
 func WardrobeCombinator() [][]int {
-	sizes := []int{120, 100, 75, 50}
+	sizes := []int{100, 75, 50}
 	//a := [][]int{{50, 50, 50, 50, 50}, {100, 100, 50}, {75, 75, 100}}
 	sizesAux := [][]int{}
 	for _, s := range sizes {
@@ -27,16 +25,52 @@ func WardrobeCombinator() [][]int {
 }
 
 func mixer(sizes []int, num int) []int {
+	// long := 250
+	// longAux := 0
+	// sizesAux := []int{}
+	// total := 0
+	// for _, i := range sizes {
+	// 	longAux = num + i
+	// 	if long-longAux >= 50 {
+	// 		total += i
+	// 		sizesAux = append(sizesAux, i)
+	// 		fmt.Println(sizesAux)
+	// 	}
+	// }
+
+	// total += num
+	// if total == long {
+	// 	return sizesAux
+	// }
+
+	longTotal := 250
 	long := 250
 	longAux := 0
 	sizesAux := []int{}
-	for _, i := range sizes {
-		longAux = num + i
-		if longAux-long >= 50 {
-			sizesAux = append(sizesAux, i)
-			fmt.Println(sizesAux)
+	total := 0
+	pos := 0
+	for total > longTotal || pos < len(sizes) || long < 0 {
+		longAux = num + sizes[pos]
+		res := longTotal - longAux
+		if contains(sizes, res) {
+			long = long - sizes[pos]
+			total += sizes[pos]
+			sizesAux = append(sizesAux, sizes[pos])
+		} else {
+			pos++
 		}
 	}
+	if total == 250 {
+		return sizesAux
+	}
+	return []int{}
+}
 
-	return sizesAux
+func contains(s []int, e int) bool {
+	for _, a := range s {
+		if a == e {
+			return true
+		}
+	}
+	return false
 }
